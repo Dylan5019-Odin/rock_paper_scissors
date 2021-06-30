@@ -47,39 +47,78 @@ const playRound = (playerSelection, computerSelection) => {
     } else if (playerChoice === `paper` && computerSelection === 'paper'){
         return -1;
     }
+}
+
+
+
+//Get Body element and Create a New Div and Paragraphs
+const body = document.querySelector('body');
+const resultDiv = document.createElement('div');
+const resultText = document.createElement('p');
+const playerScore = document.createElement('p');
+const computerScore = document.createElement('p');
+const tieGames = document.createElement('p');
+
+//Variables for Keeping Track of Player Score
+let playerWins = 0;
+let computerWins = 0;
+let tieGameCount = 0;
+
+//OnClick for if the Player Chooses Rock
+const rockButton = document.querySelector('#rockButton');
+rockButton.addEventListener('click', () => {
+    let result =  playRound("rock", computerPlay());
+    
+    displayResult(result);
+})
+
+//OnClick for if the Player Chooses Paper
+const paperButton = document.querySelector('#paperButton');
+paperButton.addEventListener('click', () => {
+    let result =  playRound("paper", computerPlay());
+    displayResult(result);
+})
+
+//OnClick for if the Player Chooses Scissors
+const scissorsButton = document.querySelector('#scissorsButton');
+scissorsButton.addEventListener('click', () => {
+    let result =  playRound("scissors", computerPlay());
+    displayResult(result);
+})
+
+//Displays the Results of the Game
+const displayResult = (result) => {
+
+    switch(result) {
+        case 1: 
+        playerWins++;
+        break;
+        case 0:
+        computerWins++; 
+        break;
+        default:
+        tieGameCount++;
+        break;
+    }
+
+    if(playerWins == 5) {
+        resultText.textContent = `Congrats! You Won!`;
+        resultDiv.appendChild(resultText);
+       
+
+    } else if (computerWins == 5) {
+
+        resultText.textContent = `Sorry! You Lost!`;
+        resultDiv.appendChild(resultText);
+        
+    }
+
+    playerScore.textContent = `Player Score: ` + playerWins;
+    computerScore.textContent = `Computer Score: ` + computerWins;
+    tieGames.textContent = `Tie Games: ` + tieGameCount;
+    resultDiv.appendChild(playerScore);
+    resultDiv.appendChild(computerScore);
+    resultDiv.appendChild(tieGames);
+    body.appendChild(resultDiv);
     
 }
-
-//game()
-//plays 5 rounds of rock, paper, scissors
-//and reports the winner or loser at the end
-const game = () => {
-
-    let playerWins = 0;
-    let computerWins = 0;
-
-    for (let i = 0; i < 5; i++){
-
-        let computerSelection = computerPlay();
-        let playerSelection = window.prompt("Please Enter Your Choice");
-        let result = playRound(playerSelection, computerSelection);
-        
-        if (result === 1) {
-            playerWins++;
-        } else if (result === 0){
-            computerWins++;
-        }
-        
-    }
-
-    if(playerWins > computerWins) {
-        console.log(`Congrats! You Won!`)
-    } else if (computerWins > playerWins) {
-        console.log(`Sorry! You Lost!`)
-    } else {
-        console.log("Tie Game!")
-    }
-
-}
-
-game();
