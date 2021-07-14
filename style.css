@@ -1,0 +1,120 @@
+body {
+    background-color: royalblue;
+    overflow: hidden;
+}
+
+.label-ui {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 50px 300px 1fr 200px 50px;
+    grid-template-areas: ". player-label . computer-label .";
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.player-label{
+    grid-area: player-label;
+   
+}
+
+.computer-label{
+    grid-area: computer-label;
+    
+}
+
+
+
+.player-score{
+    margin-left: 50px;
+    font-size: 32px;
+}
+
+.computer-score{
+    margin-left: 60px;
+    font-size: 32px;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+
+
+.deck {
+   margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.card {
+    display: grid;
+    grid-template-columns:  300px;
+    grid-template-rows: 300px 210px;
+    grid-template-areas: "image" "text";
+
+    font-family: roboto;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .9);
+    text-align: center;
+    
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.card-rock {
+    grid-area: image;
+    background: url(Imgs/rock.png);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+    
+
+}
+
+.card-paper {
+    grid-area: image;
+    background: url(Imgs/paper.png);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+    
+
+}
+
+.card-scissors {
+    grid-area: image;
+    background: url(Imgs/scissors.png);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+    
+
+}
+
+.card-text{
+    grid-area: text;
+    margin: 4px;
+}
+
+.card-text .p {
+    color: grey;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.card-text h2 {
+    margin-top: 0px;
+    font-size: 28px;
+}
+
+.card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, .6);
+}
